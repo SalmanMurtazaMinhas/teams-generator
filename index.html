@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cricket Team Picker</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/players.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Cricket Team Picker</h1>
+
+    <div class="row">
+      <button id="btnSelectAll">Select All</button>
+      <button id="btnClear">Clear</button>
+
+      <label>Teams:
+        <input id="teamCount" type="number" min="2" max="8" value="4">
+      </label>
+
+      <button id="btnGenerate">Generate</button>
+      <button id="btnShuffle">Shuffle Again</button>
+      <button id="btnCopy">Copy Teams</button>
+      <button id="btnShare">Share</button>
+      <a id="waShare" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" hidden>Teams created.</div>
+
+    <h2>Select Players</h2>
+    <div id="playerList" class="player-list"></div>
+
+    <h2>Teams</h2>
+    <div id="teamsContainer" class="teams"></div>
+  </main>
+
+</body>
+</html>

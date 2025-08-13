@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  margin: 0;
+  background: #0b1020;
+  color: #e7e9ee;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+h1 {
+  margin: 0 0 12px;
+}
+h2 {
+  margin: 18px 0 10px;
+}
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 12px 0;
+}
+
+input[type="number"] {
+  width: 80px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #2b3455;
+  background: #111831;
+  color: #e7e9ee;
+}
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover {
+  filter: brightness(1.1);
+}
+#waShare {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #22c55e;
+  color: #0b1020;
+  text-decoration: none;
+}
+#waShare:hover {
+  filter: brightness(1.1);
+}
+
+/* Flexbox lists */
+.player-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.player {
+  flex: 1 1 240px; /* flexible card min width 240px */
+  max-width: 320px;
+  background: #111831;
+  border: 1px solid #2b3455;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+.player .top {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 600;
+}
+.player .sub {
+  font-size: 12px;
+  opacity: 0.85;
+  background: #1a223d;
+  border: 1px solid #2b3455;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.teams {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.team {
+  flex: 1 1 260px;
+  max-width: 360px;
+  background: #111831;
+  border: 1px solid #2b3455;
+  border-radius: 12px;
+  padding: 12px;
+}
+.team h3 {
+  margin: 0 0 8px;
+}
+.team ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.meta {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.toast {
+  position: fixed;
+  left: 90%;
+  /* bottom: 24px; */
+  transform: translateX(-50%);
+  background: #111831;
+  color: #e7e9ee;
+  border: 1px solid #2b3455;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
