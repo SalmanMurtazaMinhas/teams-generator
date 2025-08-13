@@ -13,12 +13,12 @@
     <h1>Cricket Team Picker</h1>
 
     <div class="row">
-      <button id="btnSelectAll">Select All</button>
-      <button id="btnClear">Clear</button>
-
       <label>Teams:
         <input id="teamCount" type="number" min="2" max="8" value="4">
       </label>
+      <button id="btnSelectAll">Select All</button>
+      <button id="btnClear">Clear</button>
+
 
       <button id="btnGenerate">Generate</button>
       <button id="btnShuffle">Shuffle Again</button>
@@ -26,11 +26,13 @@
       <button id="btnShare">Share</button>
       <a id="waShare" href="#" target="_blank" rel="noopener">WhatsApp</a>
     </div>
+    <span id="selectedCounter" class="counter">Selected: 0</span>
 
     <!-- Toast -->
-    <div id="toast" class="toast" hidden>Teams created.</div>
+    <div id="toast" class="toast" hidden>🤝 “Balanced as a well-hit cover drive.”.</div>
 
     <h2>Select Players</h2>
+    
     <div id="playerList" class="player-list"></div>
 
     <h2>Teams</h2>

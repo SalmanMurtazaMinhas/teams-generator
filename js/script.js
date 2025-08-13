@@ -81,6 +81,26 @@ function renderPlayerList() {
   });
 }
 
+// live selected counter
+function updateSelectedCounter(){
+  const count = document.querySelectorAll('#playerList input:checked').length;
+  const el = document.getElementById('selectedCounter');
+  const tcEl = document.getElementById('teamCount');
+
+  // read current team count (clamp to your allowed range)
+  const raw = parseInt(tcEl?.value);
+  const teamCount = isNaN(raw) ? 0 : Math.max(2, Math.min(8, raw));
+
+  let extra = '';
+  if (teamCount > 0 && count > 0){
+    const per = Math.round((count / teamCount) * 10) / 10; // one decimal
+    extra = ` / Per team: ${per} (${teamCount} teams)`;
+  }
+
+  if (el) el.textContent = `Selected: ${count}${extra}`;
+}
+
+
 function getSelectedPlayers(){
   // read back original indexes so we select the right players
   return Array.from(document.querySelectorAll('#playerList input:checked'))
@@ -117,7 +137,7 @@ function placePlayerIntoBestTeam(teams, player){
 function generateBalancedTeams(selected, teamCount){
   const teams = initTeams(teamCount);
 
-  // 1) Collect captains (must be selected & exactly teamCount)
+  // 1) Collect captains (must be selected and exactly teamCount)
   const captains = Array.from(captainSet)
     .map(i => players[i])
     .filter(p => selected.includes(p));
@@ -164,7 +184,7 @@ function renderTeams(teams){
     const roleMeta = `Allrounder:${t.roles.Allrounder||0} Bats:${t.roles.Batter||0} Bowl:${t.roles.Bowler||0}`;
     el.innerHTML = `<h3>Team ${i+1}</h3>
       <div class="meta">Total strength: ${t.total} • ${roleMeta}</div>
-      <ul>${t.list.map(p=>`<li>${p.name}${isCaptain(p) ? ' (C)' : ''} — ${p.role} • Bat ${p.batting}, Bowl ${p.bowling}, overall ${strength(p)}</li>`).join('')}</ul>`;
+      <ul>${t.list.map(p=>`<li>${p.name}${isCaptain(p) ? ' (C)' : ''} - ${p.role} • Bat ${p.batting}, Bowl ${p.bowling}, overall ${strength(p)}</li>`).join('')}</ul>`;
     box.appendChild(el);
   });
 }
@@ -209,6 +229,8 @@ function ensureEnoughPlayers(selected, teamCount){
 // ===== wire up =====
 window.addEventListener('DOMContentLoaded', ()=>{
   renderPlayerList();
+  updateSelectedCounter();
+  document.getElementById('playerList').addEventListener('change', updateSelectedCounter);
 
   const elTeamCount = document.getElementById('teamCount');
   const btnGen = document.getElementById('btnGenerate');
@@ -228,6 +250,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     if (!teams) return; // captain count validation failed
 
     renderTeams(teams);
+    updateSelectedCounter();
     window.__lastTeams = teams;
     showToast('Teams created. Use Share or WhatsApp.');
     waShare.href = `https://wa.me/?text=${encodeURIComponent(teamsToNamesText(teams))}`;
@@ -249,10 +272,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
   btnSelectAll.addEventListener('click', ()=>{
     document.querySelectorAll('#playerList input[type=checkbox]').forEach(cb=>cb.checked=true);
+    updateSelectedCounter();
   });
 
   btnClear.addEventListener('click', ()=>{
     document.querySelectorAll('#playerList input[type=checkbox]').forEach(cb=>cb.checked=false);
     document.getElementById('teamsContainer').innerHTML='';
+    updateSelectedCounter();
   });
 });
