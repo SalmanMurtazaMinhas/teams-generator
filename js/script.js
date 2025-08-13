@@ -24,38 +24,43 @@ function sortByStrengthWithTiebreak(list){
 function renderPlayerList() {
   const wrap = document.getElementById('playerList');
   wrap.innerHTML = '';
-  players
-    .slice()
-    .sort((a,b)=>a.name.localeCompare(b.name))
-    .forEach((p, idx) => {
-      const row = document.createElement('label');
-      row.className = 'player';
 
-      const top = document.createElement('div');
-      top.className = 'top';
+  // attach original index, then sort by name for display
+  const ordered = players
+    .map((p, i) => ({ p, i })) // keep ORIGINAL index
+    .sort((a, b) => a.p.name.localeCompare(b.p.name));
 
-      const cb = document.createElement('input');
-      cb.type = 'checkbox';
-      cb.value = idx;
+  ordered.forEach(({ p, i }) => {
+    const row = document.createElement('label');
+    row.className = 'player';
 
-      const name = document.createElement('span');
-      name.textContent = `${p.name} (${p.role})`;
+    const top = document.createElement('div');
+    top.className = 'top';
 
-      top.appendChild(cb);
-      top.appendChild(name);
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.dataset.idx = i; // ✅ store ORIGINAL index
 
-      const meta = document.createElement('div');
-      meta.className = 'sub';
-      meta.textContent = `Bat ${p.batting} • Bowl ${p.bowling} • overall ${strength(p)}`;
+    const name = document.createElement('span');
+    name.textContent = `${p.name} (${p.role})`;
 
-      row.appendChild(top);
-      row.appendChild(meta);
-      wrap.appendChild(row);
-    });
+    top.appendChild(cb);
+    top.appendChild(name);
+
+    const meta = document.createElement('div');
+    meta.className = 'sub';
+    meta.textContent = `Bat ${p.batting} • Bowl ${p.bowling} • overall ${strength(p)}`;
+
+    row.appendChild(top);
+    row.appendChild(meta);
+    wrap.appendChild(row);
+  });
 }
 
 function getSelectedPlayers(){
-  return Array.from(document.querySelectorAll('#playerList input:checked')).map(cb=>players[Number(cb.value)]);
+  // read back original indexes so we select the right players
+  return Array.from(document.querySelectorAll('#playerList input:checked'))
+    .map(cb => players[Number(cb.dataset.idx)]);
 }
 
 function initTeams(n){
@@ -117,14 +122,13 @@ function renderTeams(teams){
   });
 }
 
-// NEW: names-only text for sharing
+// names-only text for sharing
 function teamsToNamesText(teams){
   return teams.map((t,i)=>{
     const namesList = t.list.map(p=>`- ${p.name}`).join('\n');
     return `Team ${i+1}:\n${namesList}`;
   }).join('\n\n');
 }
-
 
 function showToast(msg='Teams created.'){
   const t = document.getElementById('toast');
