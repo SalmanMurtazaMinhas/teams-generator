@@ -1,8 +1,10 @@
+![alt text](./img/logo.png)
+
 # Cricket Team Generator
 
 A simple, browser-based tool to create balanced cricket teams based on players’ batting and bowling ratings and roles (Allrounder, Batter, Bowler).
 
-**Live App:** [Click here to use the app](https://your-username.github.io/your-repo-name/)  
+**Live App:** [Click here to use the app](https://salmanmurtazaminhas.github.io/teams-generator/)  
 
 ## Features
 - **Player Selection** – Choose who’s playing from the full player list.
