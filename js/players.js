@@ -33,5 +33,7 @@ const players = [
   { name: 'Mudassir', batting: 3, bowling: 4, role: 'Allrounder' },
   { name: 'Raza', batting: 2, bowling: 3, role: 'Bowler' },
   { name: 'Sameer', batting: 5, bowling: 5, role: 'Allrounder' },
-  { name: 'Maani', batting: 4, bowling: 2, role: 'Batter' }
+  { name: 'Maani', batting: 4, bowling: 2, role: 'Batter' },
+  { name: 'numair', batting: 3, bowling: 3, role: 'Allrounder'},
+  { name: 'Hamza', batting: 2, bowling: 3, role: 'Allrounder'}
 ];

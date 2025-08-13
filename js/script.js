@@ -1,7 +1,7 @@
-// helpers
+// ===== helpers =====
 const strength = p => (Number(p.batting)||0) + (Number(p.bowling)||0);
 
-// Fisher Yates
+// Fisher–Yates
 function shuffle(arr){
   const a = arr.slice();
   for(let i=a.length-1;i>0;i--){
@@ -20,7 +20,11 @@ function sortByStrengthWithTiebreak(list){
   });
 }
 
-// render players with ratings on their own line
+// Track captains by ORIGINAL index in `players`
+const captainSet = new Set();
+const isCaptain = (player) => captainSet.has(players.indexOf(player));
+
+// ===== UI: render players =====
 function renderPlayerList() {
   const wrap = document.getElementById('playerList');
   wrap.innerHTML = '';
@@ -33,19 +37,39 @@ function renderPlayerList() {
   ordered.forEach(({ p, i }) => {
     const row = document.createElement('label');
     row.className = 'player';
+    if (captainSet.has(i)) row.classList.add('is-captain');
 
     const top = document.createElement('div');
     top.className = 'top';
 
     const cb = document.createElement('input');
     cb.type = 'checkbox';
-    cb.dataset.idx = i; // ✅ store ORIGINAL index
+    cb.dataset.idx = i; // store ORIGINAL index
 
     const name = document.createElement('span');
     name.textContent = `${p.name} (${p.role})`;
 
+    // Captain toggle button
+    const capBtn = document.createElement('button');
+    capBtn.type = 'button';
+    capBtn.className = 'cap-btn' + (captainSet.has(i) ? ' active' : '');
+    capBtn.textContent = captainSet.has(i) ? '★ Captain' : '☆ Captain';
+    capBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (captainSet.has(i)) {
+        captainSet.delete(i);
+      } else {
+        captainSet.add(i);
+      }
+      // update visuals
+      capBtn.textContent = captainSet.has(i) ? '★ Captain' : '☆ Captain';
+      capBtn.classList.toggle('active', captainSet.has(i));
+      row.classList.toggle('is-captain', captainSet.has(i));
+    });
+
     top.appendChild(cb);
     top.appendChild(name);
+    top.appendChild(capBtn);
 
     const meta = document.createElement('div');
     meta.className = 'sub';
@@ -89,11 +113,34 @@ function placePlayerIntoBestTeam(teams, player){
   t.roles[player.role] = (t.roles[player.role]||0)+1;
 }
 
+// ===== main generator with captains =====
 function generateBalancedTeams(selected, teamCount){
   const teams = initTeams(teamCount);
 
+  // 1) Collect captains (must be selected & exactly teamCount)
+  const captains = Array.from(captainSet)
+    .map(i => players[i])
+    .filter(p => selected.includes(p));
+
+  if (captains.length !== teamCount) {
+    alert(`Select exactly ${teamCount} captains (and make sure they are also ticked as playing).`);
+    return null;
+  }
+
+  // 2) Seed teams with captains (strongest first, one per team)
+  const sortedCaps = sortByStrengthWithTiebreak(captains);
+  sortedCaps.forEach((cap, idx) => {
+    const t = teams[idx % teamCount];
+    t.list.push(cap);
+    t.total += strength(cap);
+    t.roles[cap.role] = (t.roles[cap.role]||0)+1;
+  });
+
+  // 3) Distribute remaining selected players
+  const remaining = selected.filter(p => !captains.includes(p));
+
   const roleOrder = shuffle(['Allrounder','Batter','Bowler']);
-  const randomized = shuffle(selected);
+  const randomized = shuffle(remaining);
 
   const groups = {
     Allrounder: sortByStrengthWithTiebreak(randomized.filter(p=>p.role==='Allrounder')),
@@ -117,15 +164,15 @@ function renderTeams(teams){
     const roleMeta = `Allrounder:${t.roles.Allrounder||0} Bats:${t.roles.Batter||0} Bowl:${t.roles.Bowler||0}`;
     el.innerHTML = `<h3>Team ${i+1}</h3>
       <div class="meta">Total strength: ${t.total} • ${roleMeta}</div>
-      <ul>${t.list.map(p=>`<li>${p.name} (${p.role}) - Bat ${p.batting}, Bowl ${p.bowling}, overall ${strength(p)}</li>`).join('')}</ul>`;
+      <ul>${t.list.map(p=>`<li>${p.name}${isCaptain(p) ? ' (C)' : ''} — ${p.role} • Bat ${p.batting}, Bowl ${p.bowling}, overall ${strength(p)}</li>`).join('')}</ul>`;
     box.appendChild(el);
   });
 }
 
-// names-only text for sharing
+// names-only text for sharing (shows (C) next to captains)
 function teamsToNamesText(teams){
   return teams.map((t,i)=>{
-    const namesList = t.list.map(p=>`- ${p.name}`).join('\n');
+    const namesList = t.list.map(p=>`- ${p.name}${isCaptain(p) ? ' (C)' : ''}`).join('\n');
     return `Team ${i+1}:\n${namesList}`;
   }).join('\n\n');
 }
@@ -159,7 +206,7 @@ function ensureEnoughPlayers(selected, teamCount){
   return true;
 }
 
-// wire up
+// ===== wire up =====
 window.addEventListener('DOMContentLoaded', ()=>{
   renderPlayerList();
 
@@ -176,7 +223,10 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const selected = getSelectedPlayers();
     const teamCount = Math.max(2, Math.min(8, parseInt(elTeamCount.value)||4));
     if(!ensureEnoughPlayers(selected, teamCount)) return;
+
     const teams = generateBalancedTeams(selected, teamCount);
+    if (!teams) return; // captain count validation failed
+
     renderTeams(teams);
     window.__lastTeams = teams;
     showToast('Teams created. Use Share or WhatsApp.');

@@ -130,3 +130,12 @@ button:hover {
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
+
+.cap-btn{
+  margin-left:auto; font-size:12px; padding:4px 8px;
+  background:#1f2937; color:#e7e9ee; border:1px solid #2b3455;
+  border-radius:6px; cursor:pointer;
+}
+.cap-btn.active{ background:#f59e0b; color:#0b1020; border-color:#f59e0b; }
+.player.is-captain{ border-color:#f59e0b; }
+  
