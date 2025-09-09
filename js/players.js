@@ -1,273 +1,273 @@
 // Players master list (your data)
 const players = [
     {
-        name: ‘Ad’,
+        name: "Ad",
         batting: 2,
         bowling: 4,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Tam’,
+        name: "Tam",
         batting: 2,
         bowling: 3,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Faiz’,
+        name: "Faiz",
         batting: 5,
         bowling: 5,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
     {
-        name: ‘Danish’,
+        name: "Danish",
         batting: 5,
         bowling: 5,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
     {
-        name: ‘Hamdan’,
+        name: "Hamdan",
         batting: 3,
         bowling: 3,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Sharif’,
+        name: "Sharif",
         batting: 2,
         bowling: 5,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Tabish’,
+        name: "Tabish",
         batting: 2,
         bowling: 3,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Ahmedrauf’,
+        name: "Ahmedrauf",
         batting: 5,
         bowling: 2,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Hamadkhan’,
+        name: "Hamadkhan",
         batting: 2,
         bowling: 4,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Hamadzampa’,
+        name: "Hamadzampa",
         batting: 1,
         bowling: 5,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Aftab’,
+        name: "Aftab",
         batting: 5,
         bowling: 5,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
     {
-        name: ‘Faizan’,
+        name: "Faizan",
         batting: 5,
         bowling: 5,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
     {
-        name: ‘Noman’,
+        name: "Noman",
         batting: 3,
         bowling: 5,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Abdul’,
+        name: "Abdul",
         batting: 5,
         bowling: 1,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Ameerhamza’,
+        name: "Ameerhamza",
         batting: 5,
         bowling: 1,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Tahir’,
+        name: "Tahir",
         batting: 3,
         bowling: 2,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Maaz’,
+        name: "Maaz",
         batting: 4,
         bowling: 2,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Aziz’,
+        name: "Aziz",
         batting: 3,
         bowling: 1,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Jazzaf’,
+        name: "Jazzaf",
         batting: 2,
         bowling: 5,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Ismail’,
+        name: "Ismail",
         batting: 4,
         bowling: 3,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Shaan’,
+        name: "Shaan",
         batting: 4,
         bowling: 5,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
     {
-        name: ‘Maitham’,
+        name: "Maitham",
         batting: 3,
         bowling: 5,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Omarsafdar’,
+        name: "Omarsafdar",
         batting: 5,
         bowling: 3,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Omarijaz’,
+        name: "Omarijaz",
         batting: 5,
         bowling: 3,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
     {
-        name: ‘Arsalan’,
+        name: "Arsalan",
         batting: 2,
         bowling: 2,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Jahanghir’,
+        name: "Jahanghir",
         batting: 3,
         bowling: 3,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Yasir’,
+        name: "Yasir",
         batting: 4,
         bowling: 3,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Omarnaeem’,
+        name: "Omarnaeem",
         batting: 5,
         bowling: 3,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Ahmedishtiaq’,
+        name: "Ahmedishtiaq",
         batting: 3,
         bowling: 2,
-        role: ‘Batter’
+        role: "Batter"
     },
     {
-        name: ‘Saleh’,
+        name: "Saleh",
         batting: 2,
         bowling: 3,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Mudassir’,
+        name: "Mudassir",
         batting: 3,
         bowling: 4,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
     {
-        name: ‘Raza’,
+        name: "Raza",
         batting: 2,
         bowling: 3,
-        role: ‘Bowler’
+        role: "Bowler"
     },
     {
-        name: ‘Sameer’,
+        name: "Sameer",
         batting: 5,
         bowling: 5,
-        role: ‘Allrounder’
-    }
+        role: "Allrounder"
+    },
 {
-        name: ‘Maani’,
+        name: "Maani",
         batting: 3,
         bowling: 2,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 {
-        name: ‘Hamza’,
+        name: "Hamza",
         batting: 2,
         bowling: 3,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 {
-        name: ‘numair’,
+        name: "numair",
         batting: 3,
         bowling: 3,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 {
-        name: ‘Sabeeh’,
+        name: "Sabeeh",
         batting: 3,
         bowling: 3,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 {
-        name: ‘Fateh’,
+        name: "Fateh",
         batting: 5,
         bowling: 3,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 {
-        name: ‘`jaber’,
+        name: "jaber",
         batting: 3,
         bowling: 5,
-        role: ‘Bowler’
+        role: "Bowler"
     },
 {
-        name: ‘Haider’,
+        name: "Haider",
         batting: 3,
         bowling: 4,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 {
-        name: ‘Aqil’,
+        name: "Aqil",
         batting: 3,
         bowling: 4,
-        role: ‘Bowler’
+        role: "Bowler"
     },
 {
-        name: ‘Ajnas’,
+        name: "Ajnas",
         batting: 5,
         bowling: 5,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 {
-        name: ‘Nawaf’,
+        name: "Nawaf",
         batting: 3,
         bowling: 4,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 {
-        name: ‘Abdulbasit’,
+        name: "Abdulbasit",
         batting: 3,
         bowling: 3,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 {
-        name: ‘Aftab’,
+        name: "Aftab",
         batting: 3,
         bowling: 3,
-        role: ‘Allrounder’
+        role: "Allrounder"
     },
 ];
