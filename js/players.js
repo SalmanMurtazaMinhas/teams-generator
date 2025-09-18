@@ -56,7 +56,7 @@ const players = [
     },
     {
         name: "Hamadzampa",
-        batting: 1,
+        batting: 2,
         bowling: 5,
         role: "Bowler"
     },
@@ -93,7 +93,7 @@ const players = [
     {
         name: "Tahir",
         batting: 3,
-        bowling: 2,
+        bowling: 1,
         role: "Batter"
     },
     {
@@ -104,7 +104,7 @@ const players = [
     },
     {
         name: "Aziz",
-        batting: 3,
+        batting: 2,
         bowling: 1,
         role: "Batter"
     },
@@ -176,7 +176,7 @@ const players = [
     },
     {
         name: "Saleh",
-        batting: 2,
+        batting: 3,
         bowling: 3,
         role: "Bowler"
     },
@@ -188,7 +188,7 @@ const players = [
     },
     {
         name: "Raza",
-        batting: 2,
+        batting: 3,
         bowling: 3,
         role: "Bowler"
     },
@@ -260,14 +260,14 @@ const players = [
     },
 {
         name: "Abdulbasit",
-        batting: 3,
+        batting: 2,
         bowling: 3,
         role: "Allrounder"
     },
 {
-        name: "Aftab",
-        batting: 3,
-        bowling: 3,
+        name: "AbdullaPervaiz",
+        batting: 5,
+        bowling: 5,
         role: "Allrounder"
     },
 {
@@ -275,5 +275,11 @@ const players = [
         batting: 4,
         bowling: 5,
         role: "Allrounder"
+    },
+{
+        name: "AMajeed",
+        batting: 3,
+        bowling: 1,
+        role: "Batter"
     },
 ];
