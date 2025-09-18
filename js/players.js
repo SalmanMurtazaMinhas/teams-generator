@@ -272,7 +272,7 @@ const players = [
     },
 {
         name: "Ahsan",
-        batting: 3,
+        batting: 4,
         bowling: 5,
         role: "Allrounder"
     },
