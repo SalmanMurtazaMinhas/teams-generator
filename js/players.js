@@ -282,4 +282,34 @@ const players = [
         bowling: 1,
         role: "Batter"
     },
+{
+        name: "AbdullahBashir",
+        batting: 2,
+        bowling: 4,
+        role: "Allrounder"
+    },
+{
+        name: "Naveed",
+        batting: 2,
+        bowling: 2,
+        role: "Allrounder"
+    },
+{
+        name: "Yousif",
+        batting: 2,
+        bowling: 2,
+        role: "Allrounder"
+    },
+{
+        name: "MHamza",
+        batting: 2,
+        bowling: 2,
+        role: "Allrounder"
+    },
+{
+        name: "AdnanNoor",
+        batting: 2,
+        bowling: 2,
+        role: "Allrounder"
+    },
 ];
